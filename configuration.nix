@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -81,9 +81,12 @@
   users.users.satellite = {
     isNormalUser = true;
     description = "Nagayama Shion";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    gns3-gui 
+      gns3-gui
     ];
   };
 
@@ -96,44 +99,44 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  alacritty
-  gccgo14
-  fastfetch
-  rust-analyzer
-  rustup
-  rye
-  rocmPackages_5.llvm.clang-unwrapped
-  libgccjit
-  cl
-  zig
-  git
-  hyprland
-  kitty
-  vivaldi
-  moonlight-qt
-  neovim
-  nixd
-  sunshine
-  tldr
-  thefuck
-  fd
-  ripgrep
-  bottom
-  bat
-  zsh-prezto
-  lsd
-  duf
-  fzf
-  zellij
-  nodejs_23
-  nerd-fonts.fira-code
-  zsh
-  discord
-  slack
-  gns3-server
-  notion-app-enhanced
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    alacritty
+    gccgo14
+    fastfetch
+    rust-analyzer
+    rustup
+    rye
+    rocmPackages_5.llvm.clang-unwrapped
+    libgccjit
+    cl
+    zig
+    git
+    hyprland
+    kitty
+    vivaldi
+    moonlight-qt
+    neovim
+    nixd
+    sunshine
+    tldr
+    thefuck
+    fd
+    ripgrep
+    bottom
+    bat
+    zsh-prezto
+    lsd
+    duf
+    fzf
+    zellij
+    nodejs_23
+    nerd-fonts.fira-code
+    zsh
+    discord
+    slack
+    gns3-server
+    notion-app-enhanced
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -168,37 +171,22 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
- 
+
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
   };
 
   # enable IME & setup fonts and dictionaries
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = [pkgs.fcitx5-mozc];
-  };  
+    fcitx5.addons = [ pkgs.fcitx5-mozc ];
+  };
 
-  # fonts = {
-  #   fonts = with pkgs; [
-  #     noto-fonts-cjk-serif
-  #     noto-fonts-cjk-sans
-  #     noto-fonts-emoji
-  #     nerdfonts
-  #   ];
-  #   fontDir.enable = true;
-  #   fontconfig = {
-  #     defaultFonts = {
-  #       serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
-  #       sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
-  #       monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
-  #       emoji = ["Noto Color Emoji"];
-  #     };
-  #   };
-  # };
-  #
   # enable binaries to link libraries
   programs.nix-ld.enable = true;
 
@@ -213,10 +201,21 @@
   # Configure firewall for Sunshine
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 47984 47989 47990 48010 ];
+    allowedTCPPorts = [
+      47984
+      47989
+      47990
+      48010
+    ];
     allowedUDPPortRanges = [
-      { from = 47998; to = 48000; }
-      { from = 8000; to = 8010; }
+      {
+        from = 47998;
+        to = 48000;
+      }
+      {
+        from = 8000;
+        to = 8010;
+      }
     ];
   };
 
@@ -224,10 +223,12 @@
   programs.hyprland.enable = true;
 
   # Optional, hint Electron apps to use Wayland:
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";  
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # for global user
-  users.defaultUserShell=pkgs.zsh;  
+  users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
+  # for zsh_completion
+  environment.pathsToLink = [ "/share/zsh" ];
 }
