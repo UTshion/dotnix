@@ -2,12 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
+
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./modules/system/apps.nix
   ];
 
   # Bootloader.
@@ -86,7 +92,6 @@
       "wheel"
     ];
     packages = with pkgs; [
-      gns3-gui
     ];
   };
 
@@ -99,44 +104,19 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-    alacritty
+    aria2
     gccgo14
-    fastfetch
-    rust-analyzer
-    rustup
-    rye
     rocmPackages_5.llvm.clang-unwrapped
     libgccjit
     cl
-    zig
     git
-    hyprland
-    kitty
-    vivaldi
-    moonlight-qt
     neovim
     nixd
-    sunshine
-    tldr
-    thefuck
-    fd
-    ripgrep
-    bottom
-    bat
-    zsh-prezto
-    lsd
-    duf
-    fzf
-    zellij
     nodejs_23
     nerd-fonts.fira-code
+    sbctl # secure boot requirement
+    zig
     zsh
-    discord
-    slack
-    gns3-server
-    notion-app-enhanced
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -174,6 +154,7 @@
 
   nix = {
     settings = {
+      auto-optimise-store = true;
       experimental-features = [
         "nix-command"
         "flakes"
@@ -185,6 +166,32 @@
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = [ pkgs.fcitx5-mozc ];
+  };
+
+  fonts = {
+    fonts = with pkgs; [
+      noto-fonts-cjk-serif
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+    ];
+    fontDir.enable = true;
+    fontconfig = {
+      defaultFonts = {
+        serif = [
+          "Noto Serif CJK JP"
+          "Noto Color Emoji"
+        ];
+        sansSerif = [
+          "Noto Sans CJK JP"
+          "Noto Color Emoji"
+        ];
+        monospace = [
+          "Fira Code Nerd Font"
+          "Noto Color Emoji"
+        ];
+        emoji = [ "Noto Color Emoji" ];
+      };
+    };
   };
 
   # enable binaries to link libraries
@@ -222,7 +229,7 @@
   # Enable hyprland
   programs.hyprland.enable = true;
 
-  # Optional, hint Electron apps to use Wayland:
+  # Optional, hint electron apps to use wayland:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # for global user

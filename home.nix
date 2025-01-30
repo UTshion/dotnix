@@ -21,12 +21,18 @@
   # '';
 
   imports = [
-    ./modules/alacritty.nix
-    ./modules/git_apps.nix
-    ./modules/rust-tools.nix
-    ./modules/starship.nix
-    ./modules/vscode.nix
-    ./modules/zsh.nix
+    ./modules/home/1password.nix
+    ./modules/home/alacritty.nix
+    ./modules/home/apps.nix
+    ./modules/home/cli_tools.nix
+    ./modules/home/git_apps.nix
+    ./modules/home/hacking.nix
+    ./modules/home/python.nix
+    ./modules/home/starship.nix
+    ./modules/home/vivaldi.nix
+    ./modules/home/vscode.nix
+    ./modules/home/zellij.nix
+    ./modules/home/zsh.nix
   ];
 
   # set cursor size and dpi for 4k monitor

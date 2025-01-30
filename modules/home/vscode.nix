@@ -4,7 +4,12 @@
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
+      formulahendry.auto-close-tag
+      biomejs.biome
+      alefragnani.bookmarks
       formulahendry.code-runner
+      twxs.cmake
+      ms-vscode.cmake-tools
       ms-vscode.cpptools-extension-pack
       vadimcn.vscode-lldb
       fill-labs.dependi
