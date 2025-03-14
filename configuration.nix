@@ -48,9 +48,6 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
@@ -65,7 +62,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -104,17 +101,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    aria2
     gccgo14
     rocmPackages_5.llvm.clang-unwrapped
     libgccjit
     cl
-    git
+    clinfo
+    hackgen-nf-font # Hackgen font
+    neo4j # for bloodhound
     neovim
     nixd
-    nodejs_23
-    nerd-fonts.fira-code
     sbctl # secure boot requirement
+    xbindkeys
     zig
     zsh
   ];
@@ -133,10 +130,19 @@
   # services.openssh.enable = true;
 
   # Enable Docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
   # Enable tailscale
   services.tailscale.enable = true;
+
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -164,12 +170,18 @@
 
   # enable IME & setup fonts and dictionaries
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    type = "fcitx5";
+    enable = true;
     fcitx5.addons = [ pkgs.fcitx5-mozc ];
+    fcitx5.waylandFrontend = true;
   };
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
+      nerd-fonts.fira-code
+      nerd-fonts.meslo-lg
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.hack
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
       noto-fonts-emoji
@@ -227,7 +239,11 @@
   };
 
   # Enable hyprland
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
 
   # Optional, hint electron apps to use wayland:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -238,4 +254,28 @@
 
   # for zsh_completion
   environment.pathsToLink = [ "/share/zsh" ];
+
+  # AMD GPU driver
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.enable = true; # Enable the X11 windowing system.
+  services.xserver.videoDrivers = [ "amdgpu" ];
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
+
+  # setting openvpn
+  services.openvpn.servers = {
+    htb = {
+      autoStart = false;
+      config = "config /home/satellite/Documents/lab_UTsatellite.ovpn";
+    };
+  };
+
+  # Remove /etc/hosts file from nix's control,but initialize it.
+  environment.etc."hosts".mode = "0644";
+  
+  # OpenCL support
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
 }

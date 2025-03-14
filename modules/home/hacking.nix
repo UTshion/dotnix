@@ -1,14 +1,49 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    aircrack-ng
+    amass
+    armitage
+    autopsy
+    burpsuite
+    chisel
+    dnsmap
+    enum4linux-ng
+    eyewitness
+    gdb
+    gitleaks
+    gitjacker
     gobuster
+    gospider
+    gowitness
     dirbuster
     exploitdb
+    evil-winrm
+    feroxbuster
     ffuf
     ghidra-bin
-    hashcat
-    john
+    httpx
+    katana
+    maltego
     metasploit
+    mimikatz
+    netexec
+    nikto
     nmap
+    proxychains-ng
+    responder
+    rustscan
+    seclists
+    social-engineer-toolkit
+    s3scanner
+    smbclient-ng
+    sqlmap
+    thc-hydra
+    tor
+    tor-browser
+    wfuzz
+    whatweb
+    wordlists
+    zap
   ];
 }

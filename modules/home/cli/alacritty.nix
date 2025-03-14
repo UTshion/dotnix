@@ -6,7 +6,7 @@
     # custom settings
     settings = {
       font = {
-        size = 12.0;
+        size = 12.5;
       };
 
       font.normal = {

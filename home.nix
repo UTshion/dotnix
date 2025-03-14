@@ -21,18 +21,20 @@
   # '';
 
   imports = [
-    ./modules/home/1password.nix
-    ./modules/home/alacritty.nix
+    ./modules/home/cli/alacritty.nix
+    ./modules/home/cli/cli_tools.nix
+    ./modules/home/cli/direnv.nix
+    ./modules/home/cli/starship.nix
+    ./modules/home/cli/zellij.nix
+    ./modules/home/cli/zsh.nix
+    ./modules/home/hyprland
+    ./modules/home/rofi
     ./modules/home/apps.nix
-    ./modules/home/cli_tools.nix
     ./modules/home/git_apps.nix
     ./modules/home/hacking.nix
     ./modules/home/python.nix
-    ./modules/home/starship.nix
     ./modules/home/vivaldi.nix
     ./modules/home/vscode.nix
-    ./modules/home/zellij.nix
-    ./modules/home/zsh.nix
   ];
 
   # set cursor size and dpi for 4k monitor
@@ -46,6 +48,7 @@
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
 
+    kitty
     fastfetch
     nnn # terminal file manager
 

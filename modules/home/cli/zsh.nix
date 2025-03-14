@@ -8,21 +8,33 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
+      bat = "bat --paging=never";
       ls = "lsd";
       ll = "lsd -l";
       la = "lsd -a";
       nc = "ncat";
+      ".." = "cd ..";
     };
+
     history.size = 10000;
 
     initExtra = ''
       bindkey '^[[1;5C' forward-word
       bindkey '^[[1;5D' backward-word
-
       zstyle ':completion:*:default' menu select=2
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       zmodload zsh/complist
       bindkey -M menuselect '^[[Z' reverse-menu-complete
+
+      autoload -U history-search-end
+      zle -N history-beginning-search-backward history-search-end
+      zle -N history-beginning-search-forward history-search-end
+      bindkey "^p" history-beginning-search-backward
+      bindkey "^n" history-beginning-search-forward
+
+      zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+
+      export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>'
     '';
   };
 }

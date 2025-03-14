@@ -3,7 +3,7 @@
 {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       formulahendry.auto-close-tag
       biomejs.biome
       alefragnani.bookmarks
@@ -27,12 +27,12 @@
       esbenp.prettier-vscode
 
       # python
-      ms-python.python
+      # ms-python.python  miss
       ms-python.black-formatter
       ms-python.vscode-pylance
 
       # rust
-      rust-lang.rust-analyzer
+      # rust-lang.rust-analyzer
       tamasfe.even-better-toml
 
       # nix
@@ -40,12 +40,10 @@
       brettm12345.nixfmt-vscode
 
       # other languages
-      nvarner.typst-lsp
+      # nvarner.typst-lsp
 
-      astro-build.astro-vscode
+      # astro-build.astro-vscode   miss
 
-      # themes
-      equinusocio.vsc-material-theme-icons
     ];
   };
 }
