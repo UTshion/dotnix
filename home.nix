@@ -35,6 +35,7 @@
     ./modules/home/python.nix
     ./modules/home/vivaldi.nix
     ./modules/home/vscode.nix
+    ./modules/home/eww
   ];
 
   # set cursor size and dpi for 4k monitor

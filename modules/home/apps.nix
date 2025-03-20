@@ -7,7 +7,6 @@
     kicad
     obsidian
     obs-studio
-    overskride # A Bluetooth and Obex client
     pureref
     qalculate-gtk
     rofi-screenshot

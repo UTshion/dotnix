@@ -1,0 +1,113 @@
+;; Variables
+(defpoll active_window :interval "0.5s"
+  "scripts/get-active-window.sh")
+
+(defpoll cpu_usage :interval "1s"
+  "scripts/get-cpu.sh")
+
+(defpoll memory_usage :interval "1s"
+  "scripts/get-memory.sh")
+
+(defpoll volume :interval "0.5s"
+  "scripts/get-volume.sh")
+
+(defpoll network_status :interval "5s"
+  "scripts/get-network.sh")
+
+(defpoll bluetooth_status :interval "5s"
+  "scripts/get-bluetooth.sh")
+
+(defpoll time :interval "1s"
+  "date '+%H:%M'")
+
+(defpoll date :interval "60s"
+  "date '+%Y-%m-%d'")
+
+;; Widgets
+
+;; システムトレイコンポーネント（左部分）
+(defwidget left []
+  (box :orientation "horizontal"
+       :halign "start"
+       :space-evenly false
+       :spacing 10
+    (box :class "active-window" active_window)))
+
+;; システムステータスコンポーネント（右部分）
+(defwidget right []
+  (box :orientation "horizontal"
+       :halign "end"
+       :space-evenly false
+       :spacing 15
+    (cpu)
+    (memory)
+    (volume_widget)
+    (network)
+    (bluetooth)
+    (clock)
+    (system_menu)))
+
+;; CPU使用率ウィジェット
+(defwidget cpu []
+  (box :class "module cpu"
+       :tooltip "CPU Usage: ${cpu_usage}%"
+    (label :text " ${cpu_usage}%")))
+
+;; メモリ使用量ウィジェット
+(defwidget memory []
+  (box :class "module memory"
+       :tooltip "Memory Usage: ${memory_usage}%"
+    (label :text " ${memory_usage}%")))
+
+;; 音量ウィジェット
+(defwidget volume_widget []
+  (box :class "module volume"
+       :tooltip "Volume: ${volume}%"
+    (button :onclick "pavucontrol &"
+      (label :text " ${volume}%"))))
+
+;; ネットワークウィジェット
+(defwidget network []
+  (box :class "module network"
+       :tooltip "Network Status: ${network_status}"
+    (button :onclick "nm-connection-editor &"
+      (label :text "${network_status == 'connected' ? ' Connected' : ' Disconnected'}"))))
+
+;; Bluetoothウィジェット
+(defwidget bluetooth []
+  (box :class "module bluetooth"
+       :tooltip "Bluetooth Status: ${bluetooth_status}"
+    (button :onclick "overskride &"
+      (label :text "${bluetooth_status == 'on' ? ' On' : ' Off'}"))))
+
+;; 時計ウィジェット
+(defwidget clock []
+  (box :class "module clock"
+       :tooltip "${date}"
+    (label :text " ${time}")))
+
+;; システムメニュー
+(defwidget system_menu []
+  (box :class "module system-menu"
+    (button :onclick "scripts/toggle-system-menu.sh"
+      (label :text ""))))
+
+;; メインバー
+(defwidget bar []
+  (centerbox :orientation "horizontal"
+             :class "bar"
+    (left)
+    (box)  ; 中央スペース（必要に応じて拡張可能）
+    (right)))
+
+;; ウィンドウ定義
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0px"
+                      :width "100%"
+                      :height "30px"
+                      :anchor "top center")
+  :exclusive true
+  (bar))

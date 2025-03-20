@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     bat # better cat
+    biome # Toolchain of the web
     bottom # cross-platform graphical process/system monitor for the terminal
     duf # A simple, fast and user-friendly alternative to du
     exiftool # Tool to read, write and edit EXIF meta information
