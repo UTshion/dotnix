@@ -9,7 +9,6 @@
     obs-studio
     pureref
     qalculate-gtk
-    rofi-screenshot
     slack
     thunderbird
     vlc

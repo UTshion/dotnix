@@ -42,6 +42,7 @@
     hypridle
     hyprlock
     hyprpaper
+    hyprshot
     slurp
     wl-clipboard
   ];

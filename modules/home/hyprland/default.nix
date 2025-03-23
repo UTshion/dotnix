@@ -20,7 +20,6 @@ in
     ./variables.nix
     ./windowrules.nix
     ./windows.nix
-
     ./hyprpaper.nix
   ];
 

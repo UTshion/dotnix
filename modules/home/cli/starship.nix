@@ -156,7 +156,7 @@
 
       time = {
         disabled = false;
-        time_format = "%r";
+        time_format = "%T";
         style = "bg:color_bg1";
         format = "[[  $time ](fg:color_fg0 bg:color_bg1)]($style)";
       };

@@ -26,7 +26,7 @@
 
       # Actions
       "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-      "$mainMod, PRINT, exec, rofi-screenshot"
+      "$mainMod, PRINT, exec, hyprshot -m window"
       "$mainMod CTRL, Q, exec, wlogout"
       "$mainMod CTRL, Return, exec, rofi -show drun -replace -i"
 

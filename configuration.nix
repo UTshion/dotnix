@@ -273,9 +273,24 @@
 
   # Remove /etc/hosts file from nix's control,but initialize it.
   environment.etc."hosts".mode = "0644";
-  
+
   # OpenCL support
   hardware.opengl.extraPackages = with pkgs; [
     rocmPackages.clr.icd
   ];
+
+  # Setting NTP (Chrony)
+  services.chrony = {
+    enable = true;
+    servers = [
+      "ntp.nict.jp"
+    ];
+    enableNTS = true;
+    serverOption = "offline";
+    # for update hardware clock using system clock regularly
+    extraConfig = ''
+      rtcsync 
+    '';
+    enableRTCTrimming = false;
+  };
 }

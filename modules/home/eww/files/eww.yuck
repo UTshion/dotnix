@@ -1,21 +1,21 @@
 ;; Variables
 (defpoll active_window :interval "0.5s"
-  "scripts/get-active-window.sh")
+  "scripts/get-active-window")
 
 (defpoll cpu_usage :interval "1s"
-  "scripts/get-cpu.sh")
+  "scripts/get-cpu")
 
 (defpoll memory_usage :interval "1s"
-  "scripts/get-memory.sh")
+  "scripts/get-memory")
 
 (defpoll volume :interval "0.5s"
-  "scripts/get-volume.sh")
+  "scripts/get-volume")
 
 (defpoll network_status :interval "5s"
-  "scripts/get-network.sh")
+  "scripts/get-network")
 
 (defpoll bluetooth_status :interval "5s"
-  "scripts/get-bluetooth.sh")
+  "scripts/get-bluetooth")
 
 (defpoll time :interval "1s"
   "date '+%H:%M'")
@@ -23,15 +23,32 @@
 (defpoll date :interval "60s"
   "date '+%Y-%m-%d'")
 
+;; システムトレイに表示するバックグラウンドアプリの情報
+(defpoll system_tray :interval "5s"
+  "scripts/get-system-tray")
+
 ;; Widgets
 
-;; システムトレイコンポーネント（左部分）
+;; 左部分（アクティブウィンドウとシステムトレイ）
 (defwidget left []
   (box :orientation "horizontal"
        :halign "start"
        :space-evenly false
        :spacing 10
-    (box :class "active-window" active_window)))
+    (box :class "active-window" active_window)
+    (system_tray_widget)))
+
+;; システムトレイウィジェット
+(defwidget system_tray_widget []
+  (box :class "system-tray"
+       :orientation "horizontal"
+       :space-evenly false
+       :spacing 8
+    (for app in system_tray
+      (button :class "tray-item"
+              :tooltip "${app.name}"
+              :onclick "scripts/open-app-menu ${app.id}"
+        (label :text "${app.icon}")))))
 
 ;; システムステータスコンポーネント（右部分）
 (defwidget right []
@@ -89,13 +106,13 @@
 ;; システムメニュー
 (defwidget system_menu []
   (box :class "module system-menu"
-    (button :onclick "scripts/toggle-system-menu.sh"
+    (button :onclick "scripts/toggle-system-menu"
       (label :text ""))))
 
 ;; メインバー
 (defwidget bar []
   (centerbox :orientation "horizontal"
-             :class "bar"
+              :class "bar"
     (left)
     (box)  ; 中央スペース（必要に応じて拡張可能）
     (right)))

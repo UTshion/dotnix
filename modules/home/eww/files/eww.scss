@@ -25,6 +25,25 @@ $surface: #313244;
   margin: 5px 0;
 }
 
+// システムトレイアイテム
+.system-tray {
+  padding: 0 5px;
+  
+  .tray-item {
+    font-size: 16px;
+    padding: 0 8px;
+    border-radius: 6px;
+    background-color: $surface;
+    margin: 5px 2px;
+    transition: all 0.2s;
+    
+    &:hover {
+      background-color: lighten($surface, 10%);
+      transform: translateY(-2px);
+    }
+  }
+}
+
 // モジュール共通スタイル
 .module {
   background-color: $surface;
