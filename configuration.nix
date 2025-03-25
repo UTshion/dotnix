@@ -285,8 +285,8 @@
     servers = [
       "ntp.nict.jp"
     ];
-    enableNTS = true;
-    serverOption = "offline";
+    enableNTS = false;
+    # serverOption = "offline";
     # for update hardware clock using system clock regularly
     extraConfig = ''
       rtcsync 

@@ -11,6 +11,7 @@
     fastfetch # A simple, fast and user-friendly alternative to neofetch
     fd # A simple, fast and user-friendly alternative to find
     fzf # A command-line fuzzy finder
+    gping # Visualized ping interface
     lsd # A simple, fast and user-friendly alternative to ls
     jq # A lightweight and flexible command-line JSON processor
     nix-tree # Interactively browse a Nix store paths dependencies
