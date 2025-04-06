@@ -13,6 +13,8 @@
       ll = "lsd -l";
       la = "lsd -a";
       nc = "ncat";
+      asobi-db = "cloud-sql-proxy --auto-iam-authn workschool-production-va8s4yue:asia-northeast1:workschool --port 54321";
+      v3-db = "cloud-sql-proxy --auto-iam-authn trunk-work-school:asia-northeast1:workschool --port 65432";
       ".." = "cd ..";
     };
 

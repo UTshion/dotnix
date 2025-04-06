@@ -11,9 +11,11 @@
     fastfetch # A simple, fast and user-friendly alternative to neofetch
     fd # A simple, fast and user-friendly alternative to find
     fzf # A command-line fuzzy finder
-    gping # Visualized ping interface
-    lsd # A simple, fast and user-friendly alternative to ls
+    google-cloud-sql-proxy # Google Cloud SQL Proxy
+    google-cloud-sdk # gcloud
+    hexyl
     jq # A lightweight and flexible command-line JSON processor
+    lsd # A simple, fast and user-friendly alternative to ls
     nix-tree # Interactively browse a Nix store paths dependencies
     ripgrep # recursively searches directories for a regex pattern
     tldr # Simplified and community-driven man pages

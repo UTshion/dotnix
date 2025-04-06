@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     anki
     discord
+    dbeaver-bin
     github-desktop
     kicad
     obsidian
