@@ -61,7 +61,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
+  # Enable sound with pipew ire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -284,13 +284,57 @@
     enable = true;
     servers = [
       "ntp.nict.jp"
+      "0.jp.pool.ntp.org"
+      "1.jp.pool.ntp.org"
     ];
-    enableNTS = false;
-    # serverOption = "offline";
-    # for update hardware clock using system clock regularly
     extraConfig = ''
-      rtcsync 
+      rtcsync
+      makestep 1.0 3
+      local stratum 10
+      driftfile /var/lib/chrony/drift
     '';
     enableRTCTrimming = false;
+  };
+
+  # ハードウェアクロックの設定
+  time.hardwareClockInLocalTime = false;
+
+  # Chronyサービスの起動順序調整
+  systemd.services.chrony = {
+    wantedBy = [ "sysinit.target" ];
+    before = [ "time-sync.target" ];
+    conflicts = [ "systemd-timesyncd.service" ];
+    serviceConfig = {
+      Restart = "on-failure";
+      RestartSec = "1s";
+    };
+  };
+
+  # 修正版: 起動時の強制同期サービス
+  systemd.services.chrony-sync-at-boot = {
+    description = "Force time synchronization at boot";
+    wantedBy = [ "multi-user.target" ];
+    after = [
+      "network-online.target"
+      "chrony.service"
+    ];
+    requires = [ "chrony.service" ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "chrony-force-sync" ''
+        sleep 3
+        ${pkgs.chrony}/bin/chronyc makestep
+      '';
+    };
+  };
+
+  # 早期起動時のクロック修正
+  boot = {
+    initrd.systemd.enable = true;
+    kernelParams = [
+      "nowatchdog"
+      "nmi_watchdog=0"
+    ];
   };
 }
