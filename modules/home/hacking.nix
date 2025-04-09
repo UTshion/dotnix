@@ -6,6 +6,7 @@
     armitage
     autopsy
     burpsuite
+    bloodhound-py
     chisel
     dnsmap
     enum4linux-ng
@@ -22,6 +23,7 @@
     feroxbuster
     ffuf
     ghidra-bin
+    holehe
     httpx
     katana
     maltego
@@ -34,7 +36,9 @@
     responder
     rustscan
     seclists
+    smap
     social-engineer-toolkit
+    stegseek
     s3scanner
     smbclient-ng
     sqlmap
@@ -44,6 +48,7 @@
     wfuzz
     whatweb
     wordlists
+    wpscan
     zap
   ];
 }
