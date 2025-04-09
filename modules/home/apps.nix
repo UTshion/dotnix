@@ -8,6 +8,7 @@
     kicad
     obsidian
     obs-studio
+    postman
     pureref
     qalculate-gtk
     slack
