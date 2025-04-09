@@ -107,10 +107,10 @@
     cl
     clinfo
     hackgen-nf-font # Hackgen font
-    neo4j # for bloodhound
     neovim
     nixd
     sbctl # secure boot requirement
+    wget
     xbindkeys
     zig
     zsh
