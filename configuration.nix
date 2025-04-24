@@ -107,6 +107,7 @@
     cl
     clinfo
     hackgen-nf-font # Hackgen font
+    jdk17
     neovim
     nixd
     sbctl # secure boot requirement

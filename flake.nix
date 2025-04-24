@@ -20,6 +20,11 @@
       lanzaboote,
       ...
     }:
+    let
+      overlays = [
+        (import ./overlays/maltego.nix)
+      ];
+    in
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
@@ -32,6 +37,7 @@
             (
               { pkgs, lib, ... }:
               {
+                nixpkgs.overlays = overlays;
 
                 environment.systemPackages = [
                   # For debugging and troubleshooting Secure Boot.
