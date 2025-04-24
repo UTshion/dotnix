@@ -14,6 +14,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/system/apps.nix
+    ./modules/system/vaultwarden.nix
+    ./modules/system/certificates.nix
   ];
 
   # Bootloader.
@@ -221,6 +223,9 @@
   # Configure firewall for Sunshine
   networking.firewall = {
     enable = true;
+    interfaces."tailscale0" = {
+      allowedTCPPorts = [ 80 443 ];
+    };
     allowedTCPPorts = [
       47984
       47989
@@ -297,10 +302,10 @@
     enableRTCTrimming = false;
   };
 
-  # ハードウェアクロックの設定
+  # hardware clock setting
   time.hardwareClockInLocalTime = false;
 
-  # Chronyサービスの起動順序調整
+  # adjust the start timing of Chrony
   systemd.services.chrony = {
     wantedBy = [ "sysinit.target" ];
     before = [ "time-sync.target" ];
@@ -311,7 +316,7 @@
     };
   };
 
-  # 修正版: 起動時の強制同期サービス
+  # Chrony at booting settings
   systemd.services.chrony-sync-at-boot = {
     description = "Force time synchronization at boot";
     wantedBy = [ "multi-user.target" ];
@@ -330,7 +335,6 @@
     };
   };
 
-  # 早期起動時のクロック修正
   boot = {
     initrd.systemd.enable = true;
     kernelParams = [
