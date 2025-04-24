@@ -6,6 +6,10 @@
     userEmail = "yannbarushion@gmail.com";
     extraConfig = {
       credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+      safe.directory = [
+        "/opt/exploitdb"
+        "/opt/exploitdb-papers"
+      ];
     };
   };
 
