@@ -2,6 +2,8 @@
 {
   home.packages = with pkgs; [
     anki
+    bitwarden-desktop
+    bitwarden-menu
     discord
     dbeaver-bin
     github-desktop

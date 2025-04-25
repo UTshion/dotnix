@@ -5,6 +5,7 @@
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     bat # better cat
     biome # Toolchain of the web
+    bitwarden-cli # Secure and free password manager for all of your devices
     bottom # cross-platform graphical process/system monitor for the terminal
     duf # A simple, fast and user-friendly alternative to du
     exiftool # Tool to read, write and edit EXIF meta information
@@ -16,6 +17,7 @@
     hexyl
     jq # A lightweight and flexible command-line JSON processor
     lsd # A simple, fast and user-friendly alternative to ls
+    nyancat # JOKE CAT
     nix-tree # Interactively browse a Nix store paths dependencies
     ripgrep # recursively searches directories for a regex pattern
     tldr # Simplified and community-driven man pages
