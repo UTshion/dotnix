@@ -2,11 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 
 {
 
@@ -86,12 +82,8 @@
   users.users.satellite = {
     isNormalUser = true;
     description = "Nagayama Shion";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    packages = with pkgs; [
-    ];
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [ ];
   };
 
   # Install firefox.
@@ -164,10 +156,7 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      experimental-features = [ "nix-command" "flakes" ];
     };
   };
 
@@ -192,18 +181,9 @@
     fontDir.enable = true;
     fontconfig = {
       defaultFonts = {
-        serif = [
-          "Noto Serif CJK JP"
-          "Noto Color Emoji"
-        ];
-        sansSerif = [
-          "Noto Sans CJK JP"
-          "Noto Color Emoji"
-        ];
-        monospace = [
-          "Fira Code Nerd Font"
-          "Noto Color Emoji"
-        ];
+        serif = [ "Noto Serif CJK JP" "Noto Color Emoji" ];
+        sansSerif = [ "Noto Sans CJK JP" "Noto Color Emoji" ];
+        monospace = [ "Fira Code Nerd Font" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
       };
     };
@@ -223,15 +203,8 @@
   # Configure firewall for Sunshine
   networking.firewall = {
     enable = true;
-    interfaces."tailscale0" = {
-      allowedTCPPorts = [ 80 443 ];
-    };
-    allowedTCPPorts = [
-      47984
-      47989
-      47990
-      48010
-    ];
+    interfaces."tailscale0" = { allowedTCPPorts = [ 80 443 ]; };
+    allowedTCPPorts = [ 47984 47989 47990 48010 ];
     allowedUDPPortRanges = [
       {
         from = 47998;
@@ -265,9 +238,8 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.enable = true; # Enable the X11 windowing system.
   services.xserver.videoDrivers = [ "amdgpu" ];
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  ];
+  systemd.tmpfiles.rules =
+    [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
 
   # setting openvpn
   services.openvpn.servers = {
@@ -281,18 +253,12 @@
   environment.etc."hosts".mode = "0644";
 
   # OpenCL support
-  hardware.opengl.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-  ];
+  hardware.opengl.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
   # Setting NTP (Chrony)
   services.chrony = {
     enable = true;
-    servers = [
-      "ntp.nict.jp"
-      "0.jp.pool.ntp.org"
-      "1.jp.pool.ntp.org"
-    ];
+    servers = [ "ntp.nict.jp" "0.jp.pool.ntp.org" "1.jp.pool.ntp.org" ];
     extraConfig = ''
       rtcsync
       makestep 1.0 3
@@ -320,10 +286,7 @@
   systemd.services.chrony-sync-at-boot = {
     description = "Force time synchronization at boot";
     wantedBy = [ "multi-user.target" ];
-    after = [
-      "network-online.target"
-      "chrony.service"
-    ];
+    after = [ "network-online.target" "chrony.service" ];
     requires = [ "chrony.service" ];
     wants = [ "network-online.target" ];
     serviceConfig = {
@@ -337,9 +300,6 @@
 
   boot = {
     initrd.systemd.enable = true;
-    kernelParams = [
-      "nowatchdog"
-      "nmi_watchdog=0"
-    ];
+    kernelParams = [ "nowatchdog" "nmi_watchdog=0" ];
   };
 }
