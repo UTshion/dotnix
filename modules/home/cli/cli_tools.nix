@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
+    awscli2 # AWS Command Line Interface v2
     bat # better cat
     biome # Toolchain of the web
     bitwarden-cli # Secure and free password manager for all of your devices

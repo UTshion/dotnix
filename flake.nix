@@ -23,7 +23,6 @@
     let
       overlays = [
         (import ./overlays/maltego.nix)
-        (import ./overlays/cursor.nix)
       ];
     in
     {

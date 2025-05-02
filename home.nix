@@ -38,6 +38,8 @@
     ./modules/home/eww
     ./modules/home/desktop_entries.nix
     ./modules/home/manim.nix
+    ./modules/home/cursor.nix
+    ./modules/home/bun.nix
   ];
 
   # set cursor size and dpi for 4k monitor
