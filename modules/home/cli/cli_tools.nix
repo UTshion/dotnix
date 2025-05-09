@@ -21,6 +21,7 @@
     nyancat # JOKE CAT
     nix-tree # Interactively browse a Nix store paths dependencies
     ripgrep # recursively searches directories for a regex pattern
+    tenv # A tool for managing IaC tools (successor of tfenv)
     tldr # Simplified and community-driven man pages
     tree # A directory listing program that makes use of a tree structure
     typst # New markup-based typesetting system that is powerful and easy to learn
