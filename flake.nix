@@ -23,6 +23,7 @@
     let
       overlays = [
         (import ./overlays/maltego.nix)
+        (import ./overlays/postman.nix)
       ];
     in
     {
