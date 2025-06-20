@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     aircrack-ng
     amass
+    arjun
     armitage
     autopsy
     burpsuite
@@ -26,6 +27,7 @@
     holehe
     httpx
     katana
+    kiterunner
     maltego
     metasploit
     mimikatz
@@ -33,6 +35,7 @@
     nikto
     nmap
     proxychains-ng
+    python313Packages.shodan
     responder
     rustscan
     seclists
@@ -45,6 +48,7 @@
     thc-hydra
     tor
     tor-browser
+    wapiti
     wfuzz
     whatweb
     wordlists
