@@ -5,18 +5,14 @@
     enable = true;
     # custom settings
     settings = {
-      font = {
-        size = 12.5;
-      };
+      font = { size = 12.5; };
 
       font.normal = {
         family = "FiraCode Nerd Font";
         style = "Regular";
       };
 
-      window = {
-        opacity = 0.7;
-      };
+      window = { opacity = 0.7; };
 
       window.padding = {
         x = 15;
@@ -28,9 +24,13 @@
         lines = 40;
       };
 
-      selection = {
-        save_to_clipboard = true;
-      };
+      selection = { save_to_clipboard = true; };
+
+      keyboard.bindings = [{
+        key = "V";
+        mods = "Control";
+        action = "Paste";
+      }];
     };
   };
 }

@@ -3,9 +3,17 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    # Conflict with uwsm.
-    # systemd.enable = true;
+    # Avoid conflict with uwsm.
+    systemd.enable = false;
   };
+
+  home.file.".config/uwsm/env".text = ''
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+    export SDL_IM_MODULE=fcitx
+    export GLFW_IM_MODULE=ibus
+  '';
 
   home.pointerCursor = {
     gtk.enable = true;
@@ -33,11 +41,15 @@
     };
   };
 
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+  };
+
   home.packages = with pkgs; [
     brightnessctl
     cliphist
     dunst
-    eww
     grimblast
     hypridle
     hyprlock
