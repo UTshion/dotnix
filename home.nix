@@ -35,7 +35,6 @@
     ./modules/home/python.nix
     ./modules/home/vivaldi.nix
     ./modules/home/vscode.nix
-    ./modules/home/eww
     ./modules/home/desktop_entries.nix
     ./modules/home/manim.nix
     ./modules/home/cursor.nix

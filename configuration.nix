@@ -96,7 +96,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     gccgo14
-    rocmPackages_5.llvm.clang-unwrapped
+    # rocmPackages_5.llvm.clang-unwrapped
     libgccjit
     cl
     clinfo
@@ -164,12 +164,7 @@
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc-ut
-      fcitx5-qt
-      fcitx5-gtk
-      fcitx5-nord
-    ];
+    fcitx5.addons = with pkgs; [ fcitx5-mozc-ut fcitx5-gtk fcitx5-nord ];
     fcitx5.waylandFrontend = true;
   };
 
@@ -195,7 +190,10 @@
   };
 
   # enable binaries to link libraries
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [ stdenv.cc.cc.lib ];
+  };
 
   # Enable Sunshine
   services.sunshine = {
@@ -205,11 +203,11 @@
     openFirewall = true;
   };
 
-  # Configure firewall for Sunshine
+  # Configure firewall
   networking.firewall = {
     enable = true;
     interfaces."tailscale0" = { allowedTCPPorts = [ 80 443 ]; };
-    allowedTCPPorts = [ 47984 47989 47990 48010 ];
+    allowedTCPPorts = [ 47984 47989 47990 48010 50000 50001 50002 ];
     allowedUDPPortRanges = [
       {
         from = 47998;
@@ -219,6 +217,10 @@
         from = 8000;
         to = 8010;
       }
+      {
+        from = 50000;
+        to = 50002;
+      } 
     ];
   };
 
@@ -243,8 +245,8 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.enable = true; # Enable the X11 windowing system.
   services.xserver.videoDrivers = [ "amdgpu" ];
-  systemd.tmpfiles.rules =
-    [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+  # systemd.tmpfiles.rules =
+    # [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
 
   # setting openvpn
   services.openvpn.servers = {
@@ -258,7 +260,7 @@
   environment.etc."hosts".mode = "0644";
 
   # OpenCL support
-  hardware.opengl.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+  # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
   # Setting NTP (Chrony)
   services.chrony = {
