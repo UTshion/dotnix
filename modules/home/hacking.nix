@@ -8,6 +8,7 @@
     autopsy
     burpsuite
     bloodhound-py
+    caido
     chisel
     dnsmap
     enum4linux-ng

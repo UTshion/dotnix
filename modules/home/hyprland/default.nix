@@ -15,6 +15,7 @@ in
     ./binds.nix
     ./decoration.nix
     ./env.nix
+    ./hyprlock.nix
     ./layouts.nix
     ./main.nix
     ./variables.nix

@@ -30,6 +30,7 @@
       "$mainMod SHIFT, PRINT, exec, hyprshot -m region"
       "$mainMod CTRL, Q, exec, wlogout"
       "$mainMod CTRL, Return, exec, rofi -show drun -replace -i"
+      "$mainMod CTRL, L, exec, hyprlock"
 
       # Workspaces
       "$mainMod, 1, workspace, 1" # Open workspace 1

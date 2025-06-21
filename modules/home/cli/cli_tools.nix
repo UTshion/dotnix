@@ -17,6 +17,7 @@
     git-graph # Graph visualization of a git repository's evolution in CLI
     google-cloud-sql-proxy # Google Cloud SQL Proxy
     google-cloud-sdk # gcloud
+    gping # alternative ping
     hexyl
     infracost # Infrastructure as Code Cost Estimates
     jq # A lightweight and flexible command-line JSON processor
@@ -37,7 +38,7 @@
     yt-dlp # Command-line tool to download videos from YouTube.com and other sites
   ];
 
-  programs.thefuck = {
+  programs.pay-respects = {
     enable = true;
     enableZshIntegration = true; # set alias for zsh
   };

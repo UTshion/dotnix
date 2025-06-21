@@ -106,6 +106,7 @@
     nixd
     sbctl # secure boot requirement
     wget
+    whois
     xbindkeys
     zig
     zsh
