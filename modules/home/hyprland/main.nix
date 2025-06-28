@@ -25,9 +25,14 @@
   gtk = {
     enable = true;
 
+    # theme = {
+    #   package = pkgs.whitesur-gtk-theme;
+    #   name = "Whitesur-like-gtk-theme";
+    # };
+
     theme = {
-      package = pkgs.whitesur-gtk-theme;
-      name = "Whitesur-like-gtk-theme";
+      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme;
     };
 
     iconTheme = {

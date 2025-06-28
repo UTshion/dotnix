@@ -35,6 +35,7 @@
     netexec
     nikto
     nmap
+    oniux
     proxychains-ng
     python313Packages.shodan
     responder
@@ -52,6 +53,7 @@
     wapiti
     wfuzz
     whatweb
+    wireshark
     wordlists
     wpscan
     zap

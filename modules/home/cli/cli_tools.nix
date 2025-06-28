@@ -8,6 +8,7 @@
     bat # better cat
     biome # Toolchain of the web
     bitwarden-cli # Secure and free password manager for all of your devices
+    blueman # 
     bottom # cross-platform graphical process/system monitor for the terminal
     duf # A simple, fast and user-friendly alternative to du
     exiftool # Tool to read, write and edit EXIF meta information
@@ -19,6 +20,7 @@
     google-cloud-sdk # gcloud
     gping # alternative ping
     hexyl
+    httpie 
     infracost # Infrastructure as Code Cost Estimates
     jq # A lightweight and flexible command-line JSON processor
     lsd # A simple, fast and user-friendly alternative to ls
