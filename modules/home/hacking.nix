@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     aircrack-ng
     amass
+    angryipscanner
     arjun
     armitage
     autopsy
@@ -10,8 +11,10 @@
     bloodhound-py
     caido
     chisel
+    dalfox
     dnsmap
     enum4linux-ng
+    evil-winrm
     eyewitness
     gdb
     gitleaks
@@ -24,24 +27,30 @@
     evil-winrm
     feroxbuster
     ffuf
+    foremost
     ghidra-bin
     holehe
     httpx
     katana
     kiterunner
     maltego
+    medusa
     metasploit
     mimikatz
     netexec
     nikto
+    nuclei
     nmap
     oniux
     proxychains-ng
+    python312Packages.impacket
     python313Packages.shodan
     responder
     rustscan
     seclists
     smap
+    smbmap
+    smbscan
     social-engineer-toolkit
     stegseek
     s3scanner
@@ -53,6 +62,7 @@
     wapiti
     wfuzz
     whatweb
+    wifite2
     wireshark
     wordlists
     wpscan
