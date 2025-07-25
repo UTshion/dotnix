@@ -8,7 +8,6 @@
   };
 
   home.file.".config/uwsm/env".text = ''
-    export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export SDL_IM_MODULE=fcitx
@@ -25,14 +24,13 @@
   gtk = {
     enable = true;
 
-    # theme = {
-    #   package = pkgs.whitesur-gtk-theme;
-    #   name = "Whitesur-like-gtk-theme";
-    # };
-
     theme = {
-      name = "Tokyonight-Dark";
-      package = pkgs.tokyonight-gtk-theme;
+      package = pkgs.whitesur-gtk-theme.override {
+        darkerColor = true;
+        colorVariants = ["dark"];
+        themeVariants = ["default"];
+      };
+      name = "Whitesur-gtk-theme-dark";
     };
 
     iconTheme = {

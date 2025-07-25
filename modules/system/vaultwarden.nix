@@ -5,7 +5,6 @@
   lib,
   ...
 }:
-
 let
   domain = "nixos.tail1130da.ts.net";
   certDir = config.security.certificates.directory;
@@ -35,12 +34,10 @@ in
     recommendedTlsSettings = true;
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
-
     virtualHosts."${domain}" = {
       forceSSL = true;
       sslCertificate = "${certDir}/${certName}.crt";
       sslCertificateKey = "${certDir}/${certName}.key";
-
       locations = {
         "/" = {
           proxyPass = "http://127.0.0.1:8001";
@@ -56,7 +53,6 @@ in
           '';
         };
       };
-
       # セキュリティヘッダー
       extraConfig = ''
         add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
@@ -74,12 +70,21 @@ in
   ];
 
   # vaultwardenのバックアップサービス
-  systemd.services."vaultwarden-backup" = lib.mkIf config.services.vaultwarden.enable {
+  systemd.services."vaultwarden-backup"= lib.mkIf config.services.vaultwarden.enable {
     description = "Backup vaultwarden database";
+    after = [ "vaultwarden.service" ];
+    requires = [ "vaultwarden.service" ];
     serviceConfig = {
       Type = "oneshot";
       User = "vaultwarden";
+      Group = "vaultwarden";
       ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.sqlite}/bin/sqlite3 /var/lib/vaultwarden/db.sqlite3 \".backup /var/backup/vaultwarden/db-$(date +%F).sqlite3\"'";
+      # 権限とセキュリティの設定
+      PrivateTmp = true;
+      NoNewPrivileges = true;
+      ProtectSystem = "strict";
+      ReadWritePaths = [ "/var/backup/vaultwarden" ];
+      ReadOnlyPaths = [ "/var/lib/vaultwarden" ];
     };
   };
 
@@ -89,7 +94,13 @@ in
     serviceConfig = {
       Type = "oneshot";
       User = "vaultwarden";
+      Group = "vaultwarden";
       ExecStart = "${pkgs.findutils}/bin/find /var/backup/vaultwarden -name 'db-*.sqlite3' -type f -mtime +30 -delete";
+      # 権限とセキュリティの設定
+      PrivateTmp = true;
+      NoNewPrivileges = true;
+      ProtectSystem = "strict";
+      ReadWritePaths = [ "/var/backup/vaultwarden" ];
     };
   };
 

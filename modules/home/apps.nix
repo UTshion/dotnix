@@ -16,8 +16,10 @@
     pureref
     qalculate-gtk
     slack
+    spotify
     thunderbird
     uxplay
+    wine
     vlc
     zoom-us
   ];

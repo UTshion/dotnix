@@ -10,6 +10,7 @@
     bitwarden-cli # Secure and free password manager for all of your devices
     blueman # 
     bottom # cross-platform graphical process/system monitor for the terminal
+    claude-code # Anthropic cli coding-agent
     duf # A simple, fast and user-friendly alternative to du
     exiftool # Tool to read, write and edit EXIF meta information
     fastfetch # A simple, fast and user-friendly alternative to neofetch
@@ -26,12 +27,13 @@
     lsd # A simple, fast and user-friendly alternative to ls
     nginx # HTTP server and reverse proxy
     nyancat # JOKE CAT
+    nil # Nix LSP
     nix-tree # Interactively browse a Nix store paths dependencies
     ranger # Console file manager
-    ripgrep # recursively searches directories for a regex pattern
+    ripgrep # recursively searches directories for a regex patter
+    spicetify-cli
     sqlite # sqlite3 db
     tenv # A tool for managing IaC tools (successor of tfenv)
-    tldr # Simplified and community-driven man pages
     traefik # A Cloud Native Application Proxy
     tree # A directory listing program that makes use of a tree structure
     typst # New markup-based typesetting system that is powerful and easy to learn

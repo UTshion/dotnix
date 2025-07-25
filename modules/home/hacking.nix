@@ -63,7 +63,7 @@
     wfuzz
     whatweb
     wifite2
-    wireshark
+    # wireshark
     wordlists
     wpscan
     zap

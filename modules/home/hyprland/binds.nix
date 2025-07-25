@@ -90,9 +90,8 @@
       ", code:237, exec, brightnessctl -d smc::kbd_backlight s 10-"
     ];
 
-    # bindm = [
-    #   ", mouse:274, movewindow"
-    #   "$mainMod, mouse:273, resizewindow"
-    # ];
+    bindm = [
+      "$mainMod, mouse:272, movewindow"
+    ];
   };
 }
