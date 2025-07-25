@@ -82,7 +82,7 @@
   users.users.satellite = {
     isNormalUser = true;
     description = "Nagayama Shion";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "wireshark" ];
     packages = with pkgs; [ ];
   };
 
@@ -104,7 +104,9 @@
     jdk17
     neovim
     nixd
+    nix-index
     sbctl # secure boot requirement
+    tldr # Simplified and community-driven man pages
     wget
     whois
     xbindkeys
@@ -115,10 +117,19 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+  services.pcscd.enable = true;
+
+  programs.wireshark =  {
+    enable =true;
+    package = pkgs.wireshark;
+    usbmon = {
+      enable = true;
+    };
+  };
 
   # List services that you want to enable:
 
