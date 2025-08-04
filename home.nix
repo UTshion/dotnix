@@ -23,6 +23,7 @@
   imports = [
     ./modules/home/cli/alacritty.nix
     ./modules/home/cli/cli_tools.nix
+    ./modules/home/development.nix
     ./modules/home/cli/direnv.nix
     ./modules/home/cli/starship.nix
     ./modules/home/cli/zellij.nix

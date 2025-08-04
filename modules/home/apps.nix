@@ -6,6 +6,7 @@
     bitwarden-menu
     discord
     dbeaver-bin
+    drawio
     evince
     github-desktop
     kicad

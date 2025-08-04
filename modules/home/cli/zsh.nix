@@ -54,6 +54,9 @@
          autoload -Uz _terraform
         compdef _terraform terraform
        fi
+
+      # Bun path
+      export PATH="/home/satellite/.cache/.bun/bin:$PATH"
       '';
   };
 }

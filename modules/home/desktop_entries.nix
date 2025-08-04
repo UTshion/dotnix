@@ -19,7 +19,7 @@
     pureref = {
       name = "PureRef";
       genericName = "Reference Image Viewer";
-      exec = "pureref %F";
+      exec = "PureRef %F";
       icon = "pureref"; # アイコンファイルがある場合はパスを指定
       comment = "Arrange and view reference images";
       categories = [ "Graphics" "Viewer" ];
