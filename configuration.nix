@@ -116,6 +116,13 @@
     zsh
   ];
 
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
+  security.pam.u2f.cue = true;
+  security.pam.u2f.authFile = "/home/satellite/.config/IdemKey/u2f_keys"; # Change config directory for the use of Idemkey.
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
