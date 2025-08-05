@@ -102,9 +102,11 @@
     clinfo
     hackgen-nf-font # Hackgen font
     jdk17
+    libfido2 # FIDO2 libraries
     neovim
     nixd
     nix-index
+    pam_u2f # PAM module for U2F device 
     sbctl # secure boot requirement
     tldr # Simplified and community-driven man pages
     wget
