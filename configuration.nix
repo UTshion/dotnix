@@ -116,10 +116,19 @@
     zsh
   ];
 
+  # services.udev.extraRules = ''
+  #     ACTION=="remove", ENV{ID_VENDOR_ID}=="32a3", ENV{ID_MODEL_ID}=="3201", RUN+="${pkgs.systemd}/bin/loginctl --user satellite start lock-hyprland.service"
+  # '';
+
   security.pam.services = {
     login.u2fAuth = true;
     sudo.u2fAuth = true;
+    hyprlock = {
+      u2fAuth = true;
+      allowNullPassword = false;
+    };
   };
+  security.pam.u2f.enable = true;
   security.pam.u2f.cue = true;
   security.pam.u2f.authFile = "/home/satellite/.config/IdemKey/u2f_keys"; # Change config directory for the use of Idemkey.
 

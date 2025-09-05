@@ -1,3 +1,4 @@
+# {pkgs,...}:
 {
   programs.hyprlock = {
     enable = true;
@@ -132,4 +133,16 @@
       ];
     };
   };
+  # systemd.user.services.lock-hyprland = {
+  # Unit = {
+  #   Description = "Lock Hyprland with hyprlock";
+  # };
+  # Service = {
+  #   ExecStart = "${pkgs.hyprlock}/bin/hyprlock";
+  #   Environment = "XDG_RUNTIME_DIR=/run/user/1000"; # 必要に応じてユーザーID調整
+  # };
+  # Install = {
+  #   WantedBy = [ "default.target" ];
+  # };
+  # };
 }
