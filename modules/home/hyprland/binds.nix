@@ -58,6 +58,9 @@
       "$mainMod, Tab, workspace, m+1" # Open next workspace
       "$mainMod SHIFT, Tab, workspace, m-1" # Open previous workspace
 
+      "$mainMod, P, exec, wallpaper-changer"
+      "$mainMod SHIFT, P, exec, wallpaper-random"
+
       "$mainMod CTRL, 1, exec, moveto 1" # Move all windows to work2space 1
       "$mainMod CTRL, 2, exec, moveto 2" # Move all windows to workspace 2
       "$mainMod CTRL, 3, exec, moveto 3" # Move all windows to workspace 3

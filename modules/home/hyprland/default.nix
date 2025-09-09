@@ -27,5 +27,7 @@ in
   home.packages = with scritps; [
     moveto
     toggleallfloat
+    wallpaper-changer
+    wallpaper-random
   ];
 }
