@@ -11,10 +11,6 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    pywal-nix = {
-      url = "github:Fuwn/pywal.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -68,13 +64,9 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.satellite = import ./home.nix;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
+                # Optionally, use home-manager.extraSpecialArgs to pass
+                # arguments to home.nix
             }
-
-            inputs.pywal-nix.homeManagerModules.${pkgs.system}.default
-
           ];
         };
       };
