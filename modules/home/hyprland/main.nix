@@ -58,6 +58,7 @@
     hyprlock
     hyprpaper
     hyprshot
+    pywal
     slurp
     wl-clipboard
   ];
