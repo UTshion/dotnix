@@ -9,8 +9,8 @@
       blur = {
         enabled = true;
         size = 6;
-        passes = 2;
-        new_optimizations = "on";
+        passes = 4;
+        new_optimizations = true;
         ignore_opacity = true;
         xray = true;
         # blurls = waybar
