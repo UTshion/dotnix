@@ -29,5 +29,8 @@ in
     toggleallfloat
     wallpaper-changer
     wallpaper-random
+    change-wallpaper
+    ags-wallpaper-launcher
+    # pywal-env-setup  # 無効化: NixOS starship設定を使用
   ];
 }
