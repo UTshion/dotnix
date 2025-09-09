@@ -30,7 +30,7 @@
         colorVariants = ["dark"];
         themeVariants = ["default"];
       };
-      name = "Whitesur-gtk-theme-dark";
+      name = "Whitesur-dark";
     };
 
     iconTheme = {
