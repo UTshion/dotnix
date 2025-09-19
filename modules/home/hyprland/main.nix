@@ -52,11 +52,38 @@ in
     systemd.enable = true;
   };
 
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+        frame_color = "#8aadf4";
+        separator_color= "frame";
+        highlight = "#8aadf4";
+      };
+
+      urgency_low = {
+        background = "#24273a";
+        foreground = "#cad3f5";
+      };
+
+      urgency_norma = {
+        background = "#24273a";
+        foreground = "#cad3f5";
+      };
+
+      urgency_critical = {
+        background = "#24273a";
+        foreground = "#cad3f5";
+        frame_color = "#f5a97f";
+      };
+
+    };
+  };
+
   home.packages = with pkgs; [
     ags
     brightnessctl
     cliphist
-    dunst
     grimblast
     hypridle
     hyprlock
