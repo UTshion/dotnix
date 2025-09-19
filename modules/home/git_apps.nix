@@ -10,6 +10,12 @@
         "/opt/exploitdb"
         "/opt/exploitdb-papers"
       ];
+
+      # Signing commits
+      user.signingkey = "~/.ssh/github_sk.pub";
+      gpg.format = "ssh";
+      commit.gpgsign = true;
+      tag.gpgsign = true;
     };
   };
 
