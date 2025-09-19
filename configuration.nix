@@ -81,6 +81,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.satellite = {
     isNormalUser = true;
+    home = "/home/satellite";
     description = "Nagayama Shion";
     extraGroups = [ "networkmanager" "wheel" "wireshark" ];
     packages = with pkgs; [ ];
@@ -108,7 +109,6 @@
     nix-index
     pam_u2f # PAM module for U2F device 
     sbctl # secure boot requirement
-    tldr # Simplified and community-driven man pages
     wget
     whois
     xbindkeys

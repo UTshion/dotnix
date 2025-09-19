@@ -34,6 +34,7 @@
     spicetify-cli
     sqlite # sqlite3 db
     tenv # A tool for managing IaC tools (successor of tfenv)
+    tldr # Simpler, more approachable complement to traditional man pages
     traefik # A Cloud Native Application Proxy
     tree # A directory listing program that makes use of a tree structure
     typst # New markup-based typesetting system that is powerful and easy to learn
