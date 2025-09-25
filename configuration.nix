@@ -15,7 +15,7 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -103,11 +103,13 @@
     clinfo
     hackgen-nf-font # Hackgen font
     jdk17
+    killall # kill processes by their name
     libfido2 # FIDO2 libraries
     neovim
     nixd
     nix-index
     pam_u2f # PAM module for U2F device 
+    pstree # display process tree diagram
     sbctl # secure boot requirement
     wget
     whois
