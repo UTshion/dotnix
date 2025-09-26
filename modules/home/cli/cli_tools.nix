@@ -15,6 +15,7 @@
     exiftool # Tool to read, write and edit EXIF meta information
     fastfetch # A simple, fast and user-friendly alternative to neofetch
     fd # A simple, fast and user-friendly alternative to find
+    flyctl # Command line tools for fly.io services
     fzf # A command-line fuzzy finder
     git-graph # Graph visualization of a git repository's evolution in CLI
     google-cloud-sql-proxy # Google Cloud SQL Proxy
@@ -31,6 +32,7 @@
     nix-tree # Interactively browse a Nix store paths dependencies
     ranger # Console file manager
     ripgrep # recursively searches directories for a regex patter
+    sl # Steam Locomotive runs across your terminal
     spicetify-cli
     sqlite # sqlite3 db
     tenv # A tool for managing IaC tools (successor of tfenv)
@@ -50,5 +52,6 @@
 
   programs.zoxide = {
     enable = true;
+    enableZshIntegration = true;
   };
 }
