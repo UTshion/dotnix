@@ -8,7 +8,7 @@
     bat # better cat
     biome # Toolchain of the web
     bitwarden-cli # Secure and free password manager for all of your devices
-    blueman # 
+    blueman # GTK-based Bluetooth Manager 
     bottom # cross-platform graphical process/system monitor for the terminal
     claude-code # Anthropic cli coding-agent
     duf # A simple, fast and user-friendly alternative to du
@@ -21,8 +21,8 @@
     google-cloud-sql-proxy # Google Cloud SQL Proxy
     google-cloud-sdk # gcloud
     gping # alternative ping
-    hexyl
-    httpie 
+    hexyl # Command-line hex viewer
+    httpie # Command line HTTP client whose goal is to make CLI human-friendly
     infracost # Infrastructure as Code Cost Estimates
     jq # A lightweight and flexible command-line JSON processor
     lsd # A simple, fast and user-friendly alternative to ls
@@ -33,8 +33,9 @@
     ranger # Console file manager
     ripgrep # recursively searches directories for a regex patter
     sl # Steam Locomotive runs across your terminal
-    spicetify-cli
+    spicetify-cli # Command-line tool to customize Spotify client
     sqlite # sqlite3 db
+    tailscale-systray # Tailscale systemtray
     tenv # A tool for managing IaC tools (successor of tfenv)
     tldr # Simpler, more approachable complement to traditional man pages
     traefik # A Cloud Native Application Proxy
